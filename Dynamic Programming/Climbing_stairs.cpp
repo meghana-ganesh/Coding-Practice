@@ -1,3 +1,4 @@
+//count ways to reach the N-th stair
 #include <bits/stdc++.h> 
 int countDistinctWays(int nStairs) 
 {

@@ -22,3 +22,38 @@ long long maxSubarraySum(int arr[], int n)
         return 0;
     return maxsum;
 }
+
+
+//USING DIVIDE AND CONQUER
+#include <bits/stdc++.h> 
+using namespace std;
+
+long long maxSubarraySum(int arr[], int left, int right) {
+    if (left == right) {
+        return arr[left];
+    }
+
+    int mid = (left + right) / 2;
+    
+    // Calculate the maximum subarray sum that crosses the midpoint
+    long long maxLeftSum = INT_MIN;
+    long long sum = 0;
+    for (int i = mid; i >= left; i--) {
+        sum += arr[i];
+        maxLeftSum = max(maxLeftSum, sum);
+    }
+    
+    long long maxRightSum = INT_MIN;
+    sum = 0;
+    for (int i = mid + 1; i <= right; i++) {
+        sum += arr[i];
+        maxRightSum = max(maxRightSum, sum);
+    }
+    
+    // Calculate the maximum subarray sum in the left and right halves
+    long long maxLeftHalf = maxSubarraySum(arr, left, mid);
+    long long maxRightHalf = maxSubarraySum(arr, mid + 1, right);
+    
+    // Return the maximum of three possible cases: left, right, or across midpoint
+    return max({maxLeftHalf, maxRightHalf, maxLeftSum + maxRightSum});
+}

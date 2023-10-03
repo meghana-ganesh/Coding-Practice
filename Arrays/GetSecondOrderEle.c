@@ -27,3 +27,13 @@ vector<int> getSecondOrderElements(int n, vector<int> a)
     res.push_back(secmin);
     return res;
 }
+//OR
+vector<int> getSecondOrderElements(int n, vector<int> a) 
+{
+    // Write your code here.
+    sort(a.begin(),a.end());
+    vector<int> res;
+    res.push_back(a[n-2]);
+    res.push_back(a[1]);
+    return res;
+}

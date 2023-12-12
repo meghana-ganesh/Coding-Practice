@@ -6,13 +6,9 @@ int binary_search(vector<int> arr, int n, int x, int l, int u, int *min_idx, int
 		{
             *minx = arr[mid];
             *min_idx = mid;
+			binary_search(arr, n, x, l, mid - 1, min_idx, minx);
         }
-
-        if (arr[mid] >= x) 
-		{
-            return binary_search(arr, n, x, l, mid - 1, min_idx, minx);
-        } 
-		else 
+		else if(arr[mid] < x)
 		{
             return binary_search(arr, n, x, mid + 1, u, min_idx, minx);
         }

@@ -8,10 +8,10 @@ int lower_bound(vector<int> &arr,int n,int x,int l,int u,int *minx,int *first)
 		{
 			*first = mid;
 			*minx = arr[mid];
-			lower_bound(arr,n,x,l,mid-1,minx,first);
+			return lower_bound(arr,n,x,l,mid-1,minx,first);
 		}
 		else if(arr[mid] < x)
-			lower_bound(arr,n,x,mid+1,u,minx,first);
+			return lower_bound(arr,n,x,mid+1,u,minx,first);
 	}
 	return *first;
 }
@@ -25,10 +25,10 @@ int upper_bound(vector<int> &arr,int n,int x,int l,int u,int *minx1,int *last)
 		{
 			*last = mid;
 			*minx1 = arr[mid];
-			upper_bound(arr,n,x,l,mid-1,minx1,last);
+			return upper_bound(arr,n,x,l,mid-1,minx1,last);
 		}
 		else if(arr[mid] <= x)
-			upper_bound(arr,n,x,mid+1,u,minx1,last);
+			return upper_bound(arr,n,x,mid+1,u,minx1,last);
 	}
 	return *last;
 }

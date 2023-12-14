@@ -45,3 +45,4 @@ pair<int, int> firstAndLastPosition(vector<int>& arr, int n, int k)
     else
         return{first,last-1};
 }
+

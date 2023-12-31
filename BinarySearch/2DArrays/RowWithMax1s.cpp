@@ -1,6 +1,6 @@
 int lowerBound(vector<int> arr,int n,int x)
 {
-    int l=0,u=n;
+    int l=0,u=n-1;
     while(l <= u)
     {
         int mid = l + (u-l)/2;

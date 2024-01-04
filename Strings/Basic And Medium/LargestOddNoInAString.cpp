@@ -14,3 +14,4 @@ public:
         return "";
     }
 };
+//if last digit of no. is odd,no. is odd

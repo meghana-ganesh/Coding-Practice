@@ -1,3 +1,36 @@
+//ACCEPTED BY LEETCODE BUT TLE IN CODING NINJAS
+//TIME COMPLEXITY:O(N) SPACE COMPLEXITY:O(1)
+string reverseString(string &str)
+{
+	// Write your code here.	
+	string temp = "";
+	string ans = "";
+    int n = str.length();
+	for(int i=0;i<n;i++)
+	{
+		if(str[i] != ' ')
+			temp += str[i];
+		else if(str[i] == ' ')
+		{
+			if(i+1 < n && str[i+1] == ' ')
+				continue;
+			if(ans != "")
+				ans = temp + " " + ans;
+			else
+				ans = temp;
+			temp = "";
+		}
+	}
+	if(str[n-1] != ' ')
+        if(ans != "")
+		    ans = temp + " " + ans;
+        else
+            ans = temp;
+	return ans;
+}
+
+
+//TIME COMPLEXITY:O(N) SPACE COMPLEXITY:O(N) - STACK+ANS
 #include<stack>
 string reverseString(string &str)
 {

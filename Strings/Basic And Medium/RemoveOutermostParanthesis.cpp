@@ -6,7 +6,7 @@ int maxDepth(string s)
     for(int i=0;i<s.length();i++)
 	{
         maxi=max(maxi,count);
-        if((s[i]=='('))
+        if(s[i]=='(')
 		{
             count++;
         }

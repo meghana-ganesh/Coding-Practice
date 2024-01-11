@@ -1,5 +1,5 @@
 #include<iostream>
-
+using namespace std;
 class Node
 {
     public:
@@ -74,17 +74,43 @@ class LinkedList
             cur = cur->next;
         }
         prev->next = nullptr;
-        free(cur->next);
+        free(cur);
+    }
+    int findLength(Node *&root)
+    {
+        int count = 0;
+        if(root == nullptr)
+            return 0;
+        Node *cur = root;
+        while(cur)
+        {
+            count++;
+            cur = cur->next;
+        }
+        return count;
+    }
+    int searchele(Node *root,int data)
+    {
+        if(root == nullptr)
+            return 0;
+        Node *cur = root;
+        while(cur)
+        {
+            if(cur->data == data)
+                return 1;
+            cur = cur->next;
+        }
+        return 0;
     }
     void display(Node *root)
     {
         Node *rear = root;
         while(rear)
         {
-            printf("%d ",rear->data);
+            cout << rear->data << " ";
             rear = rear->next;
         }
-        printf("\n");
+        cout << "\n";
     }
 };
 
@@ -106,5 +132,6 @@ int main()
     list.deleteLast(root);
     list.deleteLast(root);
     list.display(root);
+    cout<< "length:" << list.findLength(root);
     return 0;
 }

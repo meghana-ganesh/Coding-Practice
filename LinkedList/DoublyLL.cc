@@ -76,6 +76,11 @@ class DLL
             prev = rear;
             rear = rear->next;
         }
+        //handle case where length of LL is only 1 otherwise seg fault will occur
+        if(prev == nullptr)
+        {
+            free(rear);
+        }
         Node *temp = rear;
         prev->next = nullptr;
         rear->prev = nullptr;
@@ -107,6 +112,8 @@ int main()
     list.deleteFront(root);
     list.deleteFront(root);
     list.display(root);
+    list.deleteLast(root);
+    list.deleteLast(root);
     list.deleteLast(root);
     list.deleteLast(root);
     list.display(root);

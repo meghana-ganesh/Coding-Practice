@@ -1,4 +1,45 @@
-//USING TORTOISE HARE:
+//USING TORTOISE HARE:O(N+C) (C is the size of the cycle,which in practice if is <<< N then TC = O(N))
+/**
+ * Definition of linked list:
+ *
+ * class Node {
+ * public:
+ *      int data;
+ *      Node *next;
+ *
+ *      Node(int data) {
+ *          this->data = data;
+ *          this->next = NULL;
+ *      }
+ * };
+ *
+ *************************************************************************/
+int findLength(Node *slow,Node *fast)
+{
+    int count = 1;
+    fast = fast->next;
+    while(slow != fast)
+    {
+        count++;
+        fast = fast->next;
+    }
+    return count;
+}
+int lengthOfLoop(Node *head)
+{
+    // Write your code here
+    Node *slow = head;
+    Node *fast = head;
+    while(fast != NULL && fast->next != NULL)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+        if(slow == fast)
+            return findLength(slow,fast);
+    }
+    return 0;
+}
+
 
 
 

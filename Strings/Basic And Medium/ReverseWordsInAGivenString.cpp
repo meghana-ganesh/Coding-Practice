@@ -1,3 +1,40 @@
+//CODINGNINJAS ALL TESTCASES PASSED IN REVERSEWORDS(MODERATE),BUT 1 TESTCASE NOT PASSED IN REVERSEWORDSINASTRING(EASY)
+int n = str.length();
+    string word = "";
+    string rev = "";
+    int l = 0;
+    while(str[l] == ' ')
+    {
+        l++;
+    }
+    int t = n-1;
+    while(str[t] == ' ')
+    {
+        t--;
+    }
+    for(int i=l;i<t+1;i++)
+    {
+        if(str[i] == ' ')
+        {
+            while(i<t+1 && str[i] == ' ')
+            {
+                i++;
+            }
+            i--;
+            if(word != "")
+                rev = word + rev;
+            rev = str[i] + rev;
+            word = "";
+        }
+        else
+            word += str[i];
+    }
+    if(word != "")
+    {
+        rev = word + rev;
+    }
+    return rev;
+
 //ACCEPTED BY LEETCODE BUT TLE IN CODING NINJAS
 //TIME COMPLEXITY:O(N) SPACE COMPLEXITY:O(1)
 string reverseString(string &str)

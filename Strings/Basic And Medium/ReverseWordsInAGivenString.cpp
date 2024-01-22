@@ -3,12 +3,12 @@ int n = str.length();
     string word = "";
     string rev = "";
     int l = 0;
-    while(str[l] == ' ')
+    while(l<n && str[l] == ' ')
     {
         l++;
     }
     int t = n-1;
-    while(str[t] == ' ')
+    while(t>=0 && str[t] == ' ')
     {
         t--;
     }

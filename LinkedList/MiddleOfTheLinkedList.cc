@@ -1,28 +1,20 @@
-/*
-Following is the class structure of the Node class:
-
-class Node
+//TORTOISE HARE PROBLEM
+//TIME COMPLEXITY:O(N/2)
+Node *findMiddle(Node *head)
 {
-public:
-    int data;
-    Node *next;
-    Node()
+    // Write your code here
+    Node *slow = head;
+    Node *fast = head;
+    while(fast != nullptr && fast->next != nullptr)
     {
-        this->data = 0;
-        next = NULL;
+        slow = slow->next;
+        fast = fast->next->next;
     }
-    Node(int data)
-    {
-        this->data = data; 
-        this->next = NULL;
-    }
-    Node(int data, Node* next)
-    {
-        this->data = data;
-        this->next = next;
-    }
-};
-*/
+    return slow;
+}
+
+
+//TIME COMPLEXITY:O(N)+O(N/2)
 #include<cmath>
 Node *findMiddle(Node *root) 
 {

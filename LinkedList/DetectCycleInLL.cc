@@ -43,3 +43,22 @@ bool detectCycle(Node *root)
     }
     return false;
 }
+
+
+//TIME COMPLEXITY: O(N*2*LOG(N))
+//SPACE COMPLEXITY: O(N)
+#include<map>
+bool detectCycle(Node *head)
+{
+	//	Write your code here
+    map<Node*,int> mpp;
+    Node *temp = head;
+    while(temp)
+    {
+        if(mpp.find(temp) != mpp.end())
+            return true;
+        mpp[temp] = 1;
+        temp = temp->next;
+    }
+    return false;
+}

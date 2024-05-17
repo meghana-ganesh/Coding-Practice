@@ -2,7 +2,6 @@
 //Reason: O(2^n) to generate every substring and O(n/2)  to check if the substring generated is a palindrome. 
 //O(k) is for inserting the palindromes in another data structure, where k  is the average length of the palindrome list.
 
-
 //SPACE COMPLEXITY: O(k * x)
 //Reason: The space complexity can vary depending upon the length of the answer. 
 //k is the average length of the list of palindromes and if we have x such list of palindromes in our final answer. 

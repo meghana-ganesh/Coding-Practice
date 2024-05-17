@@ -1,6 +1,7 @@
 //Time Complexity:  O(m*n*4^k), where “K” is the length of the word. And we are searching for the letter m*n times in the worst case. 
 //Here 4 in 4^k is because at each level of our decision tree we are making 4 recursive calls which equal 4^k in the worst case.
 
+//Space Complexity: O(K), Where k is the length of the given words.
 class Solution {
 public:
     bool helper(vector<vector<char>> &board,string word,int row,int col,int ind,int m,int n)

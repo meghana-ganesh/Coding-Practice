@@ -1,5 +1,6 @@
 //TC:O(N)+O(2E)
-//SC:O(N)+O(N)+O(N)
+//SC:O(N)+O(N)+O(N) = O(N)
+
 #include<iostream>
 #include<vector>
 using namespace std;

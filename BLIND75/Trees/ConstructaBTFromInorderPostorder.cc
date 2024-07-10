@@ -1,4 +1,4 @@
-//TC:O(N)*log(N)
+//TC:O(N)
 /**
  * Definition for a binary tree node.
  * struct TreeNode {

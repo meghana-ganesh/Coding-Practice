@@ -1,4 +1,4 @@
-//TC:O(N) + O(logN)-for multiset
+//TC:O(N) + O(NlogN)-for sorting
 //SC:O(N) for every level
 /**
  * Definition for a binary tree node.
@@ -11,35 +11,70 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+class List
+{
+    public:
+        int val;
+        int row;
+        int col;
+    List()
+    {
+        val = 0;
+        row = col = 0;
+    }
+    List(int val,int row,int col)
+    {
+        this->val = val;
+        this->row = row;
+        this->col = col;
+    }
+};
 class Solution {
 public:
-    vector<vector<int>> verticalTraversal(TreeNode* root) 
+    void dfs(TreeNode* root,int row,int col,vector<List> &mpp)
     {
-        map<int,map<int,multiset<int>>> nodes;
-        queue<pair<TreeNode*,pair<int,int>>> todo;
-        todo.push({root,{0,0}});
-        while(!todo.empty())
+        if(root == NULL)
+            return;
+        mpp.push_back({root->val,row,col});
+        dfs(root->left,row+1,col-1,mpp);
+        dfs(root->right,row+1,col+1,mpp);
+    }
+    bool static comp(List &a,List &b)
+    {
+        if(a.col != b.col)
+            return a.col < b.col;
+        if(a.row != b.row)
+            return a.row < b.row;
+        return a.val < b.val;
+    }
+    vector<vector<int>> verticalTraversal(TreeNode* root) {
+        vector<List> mpp;
+        dfs(root,0,0,mpp);
+        sort(mpp.begin(),mpp.end(),comp);
+        for(auto it:mpp)
         {
-            auto p = todo.front();
-            todo.pop();
-            TreeNode *node = p.first;
-            int x = p.second.first;
-            int y = p.second.second;
-            nodes[x][y].insert(node->val);
-            if(node->left)
-                todo.push({node->left,{x-1,y+1}});
-            if(node->right)
-                todo.push({node->right,{x+1,y+1}});
+            cout << it.val << " ";
         }
         vector<vector<int>> ans;
-        for(auto p : nodes)
+        vector<int> lst;
+        int prevcol = mpp[0].col;
+        for(auto it: mpp)
         {
-            vector<int> col;
-            for(auto q: p.second)
+            if(it.col == prevcol)
             {
-                col.insert(col.end(),q.second.begin(),q.second.end());
+                lst.push_back(it.val);
             }
-            ans.push_back(col);
+            else
+            {
+                ans.push_back(lst);
+                lst.clear();
+                prevcol = it.col;
+                lst.push_back(it.val);
+            }
+        }
+        if(!lst.empty())
+        {
+            ans.push_back(lst);
         }
         return ans;
     }

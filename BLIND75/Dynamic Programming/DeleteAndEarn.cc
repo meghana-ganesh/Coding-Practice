@@ -1,4 +1,4 @@
-//TC:O(N)+O(logN) = O(N^2)
+//TC:O(N)+O(NlogN) = O(NlogN)
 
 class Solution {
 public:

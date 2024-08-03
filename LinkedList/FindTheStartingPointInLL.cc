@@ -27,27 +27,42 @@
 
 *****************************************************************/
 
-Node *firstNode(Node *root)
-{
-    //    Write your code here.
-    if(root == nullptr || root->next == nullptr)
-        return nullptr;
-    Node *slow = root;
-    Node *fast = root;
-    while(fast != nullptr && fast->next != nullptr)
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+//TC:O(N) + O(N) = O(N)
+//SC:O(1)
+class Solution {
+public:
+    ListNode *findIntersection(ListNode *head)
     {
-        slow = slow->next;
-        fast = fast->next->next;
-        if(slow == fast)
+        ListNode *slow = head;
+        ListNode *fast = head;
+        while(fast != NULL && fast->next != NULL)
         {
-            slow = root;
-            while(slow != fast)
-            {
-                slow = slow->next;
-                fast = fast->next;
-            }
-            return slow;
+            slow = slow->next;
+            fast = fast->next->next;
+            if(slow == fast)
+                return slow;
         }
+        return NULL;
     }
-    return nullptr;
-}
+    ListNode *detectCycle(ListNode *head) 
+    {
+        ListNode *meet = findIntersection(head);
+        ListNode *start = head;
+        if(meet == NULL || head == NULL)
+            return NULL;
+        while(start != meet)
+        {
+            start = start->next;
+            meet = meet->next;
+        }
+        return start;
+    }
+};

@@ -1,0 +1,50 @@
+class Solution {
+public:
+    void dfs(vector<vector<int>> &adj,vector<int> &vis,int node,vector<int> &component)
+    {
+        vis[node] = 1;
+        component.push_back(node);
+        for(int j=0;j<adj[node].size();j++)
+        {
+            int neighbour = adj[node][j];
+            if(!vis[neighbour])
+            {
+                dfs(adj,vis,neighbour,component);
+            }
+        }
+    }
+    int countCompleteComponents(int n, vector<vector<int>>& edges) 
+    {
+        int count = 0;
+        int E = edges.size();
+        vector<vector<int>> adj(n);
+        for(auto &edge : edges)
+        {
+            int u = edge[0];
+            int v = edge[1];
+            adj[u].push_back(v);
+            adj[v].push_back(u);
+        }
+        vector<int> vis(n,0);
+        for(int i=0;i<n;i++)
+        {
+            if(!vis[i])
+            {
+                vector<int> component;
+                dfs(adj,vis,i,component);
+                int V = component.size();
+                int actualEdges = 0;
+                for(int node : component)
+                {
+                    actualEdges += adj[node].size();
+                }
+                actualEdges /= 2;
+                int maxEdges = (V * (V - 1)) / 2;
+                if (actualEdges == maxEdges) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+};

@@ -1,3 +1,5 @@
+pushes largest element to the end by doing adjacent swaps
+
 void bubbleSort(int arr[], int n) 
 {
     //write your code here

@@ -1,3 +1,4 @@
+//select minimums and swap
 void selectionSort(vector<int> &arr) {
         // code here
         int i,j;

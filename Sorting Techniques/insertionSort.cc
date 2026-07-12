@@ -1,4 +1,5 @@
 //insertion sort, inserts element at correct order, keeps checking toward left(j--)
+//TC : Best case O(n), worst case & avg case O(n^2)
 class Solution {
 public:
     vector<int> sortArray(vector<int>& arr) 

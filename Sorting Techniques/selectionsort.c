@@ -1,4 +1,5 @@
 //select minimums and swap
+//TC : Best cse,worst case, avg case O(n^2)
 void selectionSort(vector<int> &arr) {
         // code here
         int i,j;

@@ -1,5 +1,5 @@
 //pushes largest element to the end by doing adjacent swaps
-//TC: Best case O(n) , worst case O(n^2)
+//TC: Best case O(n) , worst case & avg case O(n^2)
 void bubbleSort(int arr[], int n) 
 {
     //write your code here

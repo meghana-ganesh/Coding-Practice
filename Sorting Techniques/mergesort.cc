@@ -1,4 +1,4 @@
-//TC:O(NlogN)
+//TC:O(NlogN) <- best,worst and avg case
 //SC:O(N)
 class Solution
 {

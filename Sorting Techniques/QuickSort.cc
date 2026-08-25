@@ -39,3 +39,49 @@ public:
 
 //But this gave a restrictions failed, pivot needs to be randomised to avoid worst case O(N^2) in more cases
 //also we get TLE after randomising, so for that three way partition was applied
+
+//NEW 3-WAY -> NOT  LEARNT YET
+class Solution {
+public:
+
+    void quickSort(vector<int>& nums, int low, int high)
+    {
+        if(low >= high)
+            return;
+
+        int randomIndex = low + rand() % (high - low + 1);
+        int pivot = nums[randomIndex];
+
+        int lt = low;
+        int i = low;
+        int gt = high;
+
+        while(i <= gt)
+        {
+            if(nums[i] < pivot)
+            {
+                swap(nums[lt], nums[i]);
+                lt++;
+                i++;
+            }
+            else if(nums[i] > pivot)
+            {
+                swap(nums[i], nums[gt]);
+                gt--;
+            }
+            else
+            {
+                i++;
+            }
+        }
+
+        quickSort(nums, low, lt - 1);
+        quickSort(nums, gt + 1, high);
+    }
+
+    vector<int> sortArray(vector<int>& nums)
+    {
+        quickSort(nums, 0, nums.size() - 1);
+        return nums;
+    }
+};

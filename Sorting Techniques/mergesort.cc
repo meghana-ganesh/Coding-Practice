@@ -1,49 +1,47 @@
 //TC:O(NlogN) <- best,worst and avg case
 //SC:O(N)
-class Solution
-{
-    public:
-    void merge(int arr[], int l, int m, int r)
+class Solution {
+  public:
+    void merge(vector<int> &arr,int l,int mid,int r)
     {
-         // Your code here
-        int low = l;
-        int high = m+1;
         vector<int> temp;
-        while(low <= m && high <= r)
+        int left = l;
+        int right = mid+1;
+        while(left <= mid && right <= r)
         {
-            if(arr[low] <= arr[high])
+            if(arr[left] <= arr[right])
             {
-                temp.push_back(arr[low]);
-                low++;
+                temp.push_back(arr[left]);
+                left++;
             }
             else
             {
-                temp.push_back(arr[high]);
-                high++;
+                temp.push_back(arr[right]);
+                right++;
             }
+            
         }
-        while(low <= m)
+        while(left <= mid)
         {
-            temp.push_back(arr[low]);
-            low++;
+            temp.push_back(arr[left]);
+            left++;
         }
-        while(high <= r)
+        while(right <= r)
         {
-            temp.push_back(arr[high]);
-            high++;
+            temp.push_back(arr[right]);
+            right++;
         }
         for(int i=l;i<=r;i++)
         {
             arr[i] = temp[i-l];
         }
     }
-    public:
-    void mergeSort(int arr[], int l, int r)
+    void mergeSort(vector<int>& arr, int l, int r) 
     {
-        //code here
+        // code here
         if(l >= r)
             return;
-        int mid = (l+r)/2;
+        int mid = (l + r)/2;
         mergeSort(arr,l,mid);
         mergeSort(arr,mid+1,r);
         merge(arr,l,mid,r);
